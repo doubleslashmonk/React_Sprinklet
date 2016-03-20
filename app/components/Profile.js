@@ -23,17 +23,26 @@ var Profile = React.createClass({
 
   componentDidMount : function(){
       this.ref = new Firebase('https://reactsprinklet.firebaseio.com/');
-      /* bind to property 'notes' of the state */
-      var childRef = this.ref.child(this.props.params.username);
-      this.bindAsArray(childRef,'notes');
+      this.init(this.props.params.username);
+  },
 
-      helpers.getGitHubInfo(this.props.params.username)
-      .then(function(data){
-        this.setState({
-          bio:data.bio,
-          repos:data.repos
-        })
-      }.bind(this))
+  componentWillReceiveProps : function (nextProps){
+    this.unbind('notes');
+    this.init(nextProps.params.username);
+  },
+
+  init : function (username){
+    /* bind to property 'notes' of the state */
+    var childRef = this.ref.child(username);
+    this.bindAsArray(childRef,'notes');
+
+    helpers.getGitHubInfo(username)
+    .then(function(data){
+      this.setState({
+        bio:data.bio,
+        repos:data.repos
+      })
+    }.bind(this))
   },
 
   componentWillUnmount : function(){
