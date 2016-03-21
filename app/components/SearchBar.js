@@ -20,7 +20,7 @@ var SearchBar = React.createClass({
             <input type="text" className="form-control" ref={this.getRef} />
           </div>
           <div className="form-group col-sm-5">
-            <button type="submit" className="btn btn-block btn-primary">Search</button>
+            <button type="submit" className="btn btn-block btn-primary">Search GitHub User</button>
           </div>
         </form>
       </div>

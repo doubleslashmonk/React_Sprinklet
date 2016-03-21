@@ -4,7 +4,7 @@ var Home = React.createClass({
   render : function(){
     return (
       <h2 className="text-center">
-      Search the username
+      Search the GitHub Username
       </h2>
     )
   }
