@@ -11,6 +11,7 @@ var helpers = require('./Utils/Helper');
 var Profile = React.createClass({
   mixins: [ReactFireMixin],
 
+  /* Returns states on initial rendering */
   getInitialState : function(){
     return {
       notes: [],
@@ -21,18 +22,16 @@ var Profile = React.createClass({
     }
   },
 
-  componentDidMount : function(){
-      this.ref = new Firebase('https://reactsprinklet.firebaseio.com/');
-      this.init(this.props.params.username);
-  },
-
+  /* Handles the props change post initial rendering (Searching for other username post initial render) */
   componentWillReceiveProps : function (nextProps){
     this.unbind('notes');
     this.init(nextProps.params.username);
   },
 
+
+  /* Gets GitHub Bio and Repo through promises using Helper.js */
   init : function (username){
-    /* bind to property 'notes' of the state */
+    /* binds to the property 'notes' of the state */
     var childRef = this.ref.child(username);
     this.bindAsArray(childRef,'notes');
 
@@ -45,18 +44,15 @@ var Profile = React.createClass({
     }.bind(this))
   },
 
-  componentWillUnmount : function(){
-    /* Remove listener when the component has moved on */
-    this.unbind('notes');
-  },
-
+  /* Sets new note through FireBase */
   handleAddNotes : function(newNote){
-    /* Update firebase with new note. Using .set() to set manual key. */
+    /* Use .Push() if you don't need specific key for your note*/
     this.ref.child(this.props.params.username).child(this.state.notes.length).set(newNote);
   },
 
-  render : function(){
 
+  /* Renders the component */
+  render : function(){
     return (
       <div className="row">
        <div className="col-md-4">
@@ -73,7 +69,18 @@ var Profile = React.createClass({
        </div>
      </div>
     )
-  }
+  },
+
+  /* DOM is accessible here, DOM Manipulations and data fetching will be done here */
+  componentDidMount : function(){
+        this.ref = new Firebase('https://reactsprinklet.firebaseio.com/');
+        this.init(this.props.params.username);
+    },
+
+  /* Remove listener when the component has moved on */
+  componentWillUnmount : function(){
+      this.unbind('notes');
+    },
 });
 
 module.exports = Profile;

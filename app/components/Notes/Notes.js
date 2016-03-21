@@ -3,6 +3,7 @@ var NotesList = require('./NotesList');
 var AddNote = require('./AddNote');
 
 var Notes = React.createClass({
+  /* Validating Props */
   propTypes : {
     username : React.PropTypes.string.isRequired,
     notes : React.PropTypes.array.isRequired,

@@ -1,12 +1,14 @@
 var React = require('react');
 
 var Repos = React.createClass({
+  /* Validating Props */
   propTypes : {
     username : React.PropTypes.string.isRequired,
     repos : React.PropTypes.array.isRequired
   },
 
   render : function(){
+    /* Returns li elements containing Repo Name and Description (of any) */
     var repos = this.props.repos.map(function(repo,index){
         return(
           <li className = "list-group-item" key= {index}>
@@ -16,7 +18,6 @@ var Repos = React.createClass({
         )
     });
 
-    console.log('REPOS', this.props.repos)
     return (
       <div>
           <h3> User Repos </h3>
