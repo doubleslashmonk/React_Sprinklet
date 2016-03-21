@@ -8,3 +8,4 @@ Sprinklet Version 0.0.1
 npm install
 webpack -w
 ```
+Live Demo : http://mudassirmalik.vacau.com/M4S/React/Sprinklet/index.html
