@@ -14,7 +14,9 @@ var AddNote = React.createClass({
   handleSubmit : function(){
     var newNote = this.note.value;
     this.note.value = '';
-    newNote != "" && this.props.addNote(newNote);
+    if(newNote != "") {
+        this.props.addNote(newNote);
+    }
   },
 
   render : function(){

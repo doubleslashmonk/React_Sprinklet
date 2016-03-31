@@ -9,7 +9,9 @@ var SearchBar = React.createClass({
   handleSubmit: function(){
     var username = this.usernameRef.value;
     this.usernameRef.value = '';
-    username != "" && this.history.pushState(null, "/profile//" +username);
+    if(username != "") {
+        this.history.pushState(null, "/profile//" +username);
+    }
   },
   render: function(){
     return (
