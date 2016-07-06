@@ -18,4 +18,4 @@ npm install
 webpack -w
 npm start
 ```
-Live Demo : http://mudassirmalik.vacau.com/M4S/React/Sprinklet/index.html
+Live Demo : http://sprinklet.malik4sprinklr.com/
